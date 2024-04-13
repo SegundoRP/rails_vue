@@ -8,12 +8,12 @@ require 'json'
 class UsgsClient
   API_URL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
 
-  def earthquakes_last_month
+  def last_thirty_days_of_earthquakes
     response = build_get_request
     JSON.parse(response.body) if response.is_a?(Net::HTTPSuccess)
   end
 
-  # private
+  private
 
   def build_url
     URI(API_URL.to_s)
