@@ -7,4 +7,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  namespace :api do
+    resources :features, controller: :earthquakes, only: %i[index] do
+      resources :comments, only: %i[create]
+    end
+  end
 end

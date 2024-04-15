@@ -1,4 +1,5 @@
 class Earthquake < ApplicationRecord
+  VALID_FILTER_MAG_TYPES = %w[md ml ms mw me mi mb mlg].freeze
   self.inheritance_column = nil
 
   validates :title, :external_url, :place, :mag_type, :latitude, :longitude, presence: true
