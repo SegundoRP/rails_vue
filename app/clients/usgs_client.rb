@@ -1,12 +1,10 @@
-# frozen_string_literal: true
-
 require 'uri'
 require 'net/http'
 require 'json'
 
 # class for get earthqueakes for the last 30 days
 class UsgsClient
-  API_URL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'
+  API_URL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson'.freeze
 
   def last_thirty_days_of_earthquakes
     response = build_get_request

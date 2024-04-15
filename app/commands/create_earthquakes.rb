@@ -1,6 +1,8 @@
 class CreateEarthquakes
-  def self.execute
+  def execute
     process_response_batch
+  rescue StandardError => e
+    Rails.logger.error "Error processing earthquake data: #{e.message} #{e.backtrace}"
   end
 
   private
