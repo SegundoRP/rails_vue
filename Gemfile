@@ -37,6 +37,8 @@ gem "bootsnap", require: false
 
 gem 'json'
 gem 'http'
+gem 'jsonapi-serializer'
+gem 'will_paginate'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
