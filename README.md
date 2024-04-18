@@ -43,7 +43,7 @@ This repository is an API to get earthquakes of the last 30 days. Therefore ther
 #### Post a comment per earthquake
 
 ```ruby
-  GET /api/features/:feature_id/comments
+  POST /api/features/:feature_id/comments
 ```
 
 |Parameter|Type|Description|
