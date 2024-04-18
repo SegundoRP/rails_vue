@@ -1,24 +1,96 @@
-# README
+# README  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository is an API to get earthquakes of the last 30 days. Therefore there is an interface to check earthquake's features and add a comment about every earthquake that you want.
 
-Things you may want to cover:
+## Tech Stack
 
-* Ruby version
+- Earthquake [API](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson)
+- Ruby 3.1.2
+- Ruby on Rails 7.1.3
+- Vue js 3
+- Vuex 4
+- Bootstrap 5.3.3
+- Vite 5.2
+- Vue awesome paginate 1.1.46
+- Postgresql 12
+- Gems:
+  - rack-cors
+  - json
+  - http
+  - jsonapi-serializer
+  - will_paginate
 
-* System dependencies
+## Endpoints 
 
-* Configuration
+#### Get all earthquakes
 
-* Database creation
+```ruby
+  GET /api/features
+```
 
-* Database initialization
+#### Get earthquakes with page, per page and filter settings
 
-* How to run the test suite
+```ruby
+  GET /api/features?page={page}&per_page={per_page}&mag_type[]={mag_type}
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+|Parameter|Type|Description|
+|-----|----|----|
+|`page`|`integer`|Required - number of page|
+|`per_page`|`integer`|Required - records per page|
+|`mag_type`|`array(string)`|Required - filter by mag_type, options: md, ml, ms, mw, me, mi, mb, mlg|
 
-* Deployment instructions
+#### Post a comment per earthquake
 
-* ...
+```ruby
+  GET /api/features/:feature_id/comments
+```
+
+|Parameter|Type|Description|
+|-----|----|----|
+|`body`|`text`|Required - content of comment for specific feature(earthquake)|
+|`feature_id`|`integer`|Required - id of the feature(earthquake)|
+
+
+## Setup
+
+1. Clone repo and change to directory repo 
+
+```
+git clone git@github.com:SegundoRP/rails_vue.git && cd $_
+```
+
+2. Install backend dependencies
+
+```
+bundle i
+```
+
+3. Create db and run migrations
+
+```
+rails db:create db:migrate
+```
+4. Install frontend dependencies
+
+```
+cd client && npm i
+```
+
+5. Run task to get earthquakes into db
+
+```
+rake earthquakes:get_earthquakes
+```
+
+6. Run backend server
+
+```
+rails s
+```
+
+7. Run frontend server
+
+```
+cd client && npm run dev
+```
