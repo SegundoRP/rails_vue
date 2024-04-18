@@ -1,6 +1,7 @@
 class Api::CommentsController < ApplicationController
   def create
     comment = Comment.build(comment_params)
+    comment.feature_id = params[:feature_id].to_i unless params[:comment][:feature_id].present?
 
     if comment.save!
       render json: CommentSerializer.new(comment), status: :ok
